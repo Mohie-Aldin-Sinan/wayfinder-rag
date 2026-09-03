@@ -6,5 +6,8 @@ dist/
 wheels/
 *.egg-info
 
+# Local vector database storage
+qdrant_storage/
+
 # Virtual environments
 .venv
