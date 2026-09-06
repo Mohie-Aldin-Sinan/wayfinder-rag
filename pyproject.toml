@@ -5,6 +5,7 @@ description = "A production-oriented RAG and agentic retrieval system for open-s
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "openai>=3.7.0",
     "pydantic>=2,<3",
     "qdrant-client>=1.19.0",
     "sentence-transformers>=6.0.0",
