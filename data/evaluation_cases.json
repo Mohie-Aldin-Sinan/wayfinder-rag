@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What is Qdrant used for?",
+    "relevant_chunk_ids": ["qdrant-chunk-0"]
+  },
+  {
+    "question": "What does an embedding represent?",
+    "relevant_chunk_ids": ["embeddings-chunk-0"]
+  },
+  {
+    "question": "Why does retrieval quality matter for generation?",
+    "relevant_chunk_ids": ["rag-chunk-0"]
+  }
+]

@@ -1,7 +1,17 @@
+from unittest.mock import Mock
+from pathlib import Path
+
 import pytest
 
-from wayfinder.evaluation import RetrievalEvaluationCase, recall_at_k
+from wayfinder.evaluation import (
+    RetrievalEvaluationCase,
+    evaluate_retrieval,
+    load_documents,
+    load_evaluation_cases,
+    recall_at_k,
+)
 from wayfinder.ingestion.models import Chunk
+from wayfinder.retrieval.service import RetrievalService
 
 
 def test_recall_at_k_is_one_when_a_relevant_chunk_is_retrieved():
@@ -63,3 +73,50 @@ def test_recall_at_k_measures_fraction_of_relevant_chunks_retrieved():
     ]
 
     assert recall_at_k(case, chunks) == 0.5
+
+
+def test_evaluate_retrieval_returns_mean_recall():
+    retrieval_service = Mock(spec=RetrievalService)
+    retrieval_service.retrieve.side_effect = [
+        [
+            Chunk(
+                id="chunk-1",
+                document_id="doc-1",
+                content="Relevant content.",
+                chunk_index=0,
+            )
+        ],
+        [],
+    ]
+    cases = [
+        RetrievalEvaluationCase(
+            question="Question one",
+            relevant_chunk_ids=frozenset({"chunk-1"}),
+        ),
+        RetrievalEvaluationCase(
+            question="Question two",
+            relevant_chunk_ids=frozenset({"chunk-2"}),
+        ),
+    ]
+
+    assert evaluate_retrieval(retrieval_service, cases, top_k=3) == 0.5
+    assert retrieval_service.retrieve.call_count == 2
+
+
+def test_load_documents_and_evaluation_cases(tmp_path: Path):
+    documents_dir = tmp_path / "documents"
+    documents_dir.mkdir()
+    (documents_dir / "qdrant.md").write_text("Qdrant stores vectors.", encoding="utf-8")
+    cases_path = tmp_path / "cases.json"
+    cases_path.write_text(
+        '[{"question": "What stores vectors?", '
+        '"relevant_chunk_ids": ["qdrant-chunk-0"]}]',
+        encoding="utf-8",
+    )
+
+    documents = load_documents(documents_dir)
+    cases = load_evaluation_cases(cases_path)
+
+    assert documents[0].id == "qdrant"
+    assert documents[0].content == "Qdrant stores vectors."
+    assert cases[0].relevant_chunk_ids == frozenset({"qdrant-chunk-0"})
