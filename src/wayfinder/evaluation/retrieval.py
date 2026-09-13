@@ -18,6 +18,33 @@ def recall_at_k(
     return len(relevant_ids_retrieved) / len(evaluation_case.relevant_chunk_ids)
 
 
+def reciprocal_rank(
+    evaluation_case: RetrievalEvaluationCase,
+    retrieved_chunks: Sequence[Chunk],
+) -> float:
+    for rank, chunk in enumerate(retrieved_chunks, start=1):
+        if chunk.id in evaluation_case.relevant_chunk_ids:
+            return 1.0 / rank
+
+    return 0.0
+
+
+def hit_at_k(
+    evaluation_case: RetrievalEvaluationCase,
+    retrieved_chunks: Sequence[Chunk],
+    k: int,
+) -> float:
+    if k <= 0:
+        raise ValueError("k must be greater than zero")
+
+    return float(
+        any(
+            chunk.id in evaluation_case.relevant_chunk_ids
+            for chunk in retrieved_chunks[:k]
+        )
+    )
+
+
 def evaluate_retrieval(
     retrieval_service: RetrievalService,
     evaluation_cases: Sequence[RetrievalEvaluationCase],

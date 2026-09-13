@@ -10,5 +10,49 @@
   {
     "question": "Why does retrieval quality matter for generation?",
     "relevant_chunk_ids": ["rag-chunk-0"]
+  },
+  {
+    "question": "What is the risk of making chunks too large?",
+    "relevant_chunk_ids": ["chunking-chunk-0"]
+  },
+  {
+    "question": "Which retrieval method helps with exact technical identifiers?",
+    "relevant_chunk_ids": ["hybrid-retrieval-chunk-0"]
+  },
+  {
+    "question": "How can we reduce irrelevant context before generation?",
+    "relevant_chunk_ids": ["reranking-chunk-0"]
+  },
+  {
+    "question": "How can search be restricted to a particular document type?",
+    "relevant_chunk_ids": ["qdrant-filtering-chunk-0"]
+  },
+  {
+    "question": "What does cosine similarity compare?",
+    "relevant_chunk_ids": ["vector-search-chunk-0"]
+  },
+  {
+    "question": "How can search match related meanings with different words?",
+    "relevant_chunk_ids": ["semantic-search-chunk-0", "vector-search-chunk-0"]
+  },
+  {
+    "question": "What should a model do when retrieved context is insufficient?",
+    "relevant_chunk_ids": ["prompt-grounding-chunk-0"]
+  },
+  {
+    "question": "Why should first-stage retrieval collect many candidates?",
+    "relevant_chunk_ids": ["candidate-retrieval-chunk-0"]
+  },
+  {
+    "question": "Which ranking method uses inverse document frequency?",
+    "relevant_chunk_ids": ["bm25-chunk-0"]
+  },
+  {
+    "question": "What two signals does hybrid retrieval combine?",
+    "relevant_chunk_ids": ["hybrid-retrieval-chunk-0"]
+  },
+  {
+    "question": "Why can a better prompt not fix missing evidence?",
+    "relevant_chunk_ids": ["prompt-grounding-chunk-0", "rag-chunk-0"]
   }
 ]

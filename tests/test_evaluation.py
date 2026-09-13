@@ -6,9 +6,11 @@ import pytest
 from wayfinder.evaluation import (
     RetrievalEvaluationCase,
     evaluate_retrieval,
+    hit_at_k,
     load_documents,
     load_evaluation_cases,
     recall_at_k,
+    reciprocal_rank,
 )
 from wayfinder.ingestion.models import Chunk
 from wayfinder.retrieval.service import RetrievalService
@@ -120,3 +122,18 @@ def test_load_documents_and_evaluation_cases(tmp_path: Path):
     assert documents[0].id == "qdrant"
     assert documents[0].content == "Qdrant stores vectors."
     assert cases[0].relevant_chunk_ids == frozenset({"qdrant-chunk-0"})
+
+
+def test_ranking_metrics_reward_relevant_chunks_near_the_top():
+    case = RetrievalEvaluationCase(
+        question="What is Qdrant?",
+        relevant_chunk_ids=frozenset({"chunk-2"}),
+    )
+    chunks = [
+        Chunk(id="chunk-1", document_id="doc", content="Other", chunk_index=0),
+        Chunk(id="chunk-2", document_id="doc", content="Relevant", chunk_index=1),
+    ]
+
+    assert hit_at_k(case, chunks, k=1) == 0.0
+    assert hit_at_k(case, chunks, k=2) == 1.0
+    assert reciprocal_rank(case, chunks) == 0.5
