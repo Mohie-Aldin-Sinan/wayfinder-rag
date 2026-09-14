@@ -1,0 +1,293 @@
+{
+  "documents": [
+    {
+      "id": "qdrant-0",
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/filtering/",
+      "fetched_at": "2026-09-14T16:05:11.420154+00:00"
+    },
+    {
+      "id": "qdrant-1",
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/collections/",
+      "fetched_at": "2026-09-14T16:05:12.481008+00:00"
+    },
+    {
+      "id": "qdrant-2",
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/indexing/",
+      "fetched_at": "2026-09-14T16:05:15.716513+00:00"
+    },
+    {
+      "id": "qdrant-3",
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/storage/",
+      "fetched_at": "2026-09-14T16:05:18.032955+00:00"
+    },
+    {
+      "id": "sentence-transformers-4",
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/examples/applications/semantic-search/README.html",
+      "fetched_at": "2026-09-14T16:05:22.850965+00:00"
+    },
+    {
+      "id": "sentence-transformers-5",
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/docs/cross_encoder/usage/usage.html",
+      "fetched_at": "2026-09-14T16:05:23.325598+00:00"
+    },
+    {
+      "id": "sentence-transformers-6",
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+      "fetched_at": "2026-09-14T16:05:24.097750+00:00"
+    },
+    {
+      "id": "sentence-transformers-7",
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html",
+      "fetched_at": "2026-09-14T16:05:30.424363+00:00"
+    },
+    {
+      "id": "sentence-transformers-8",
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/docs/sentence_transformer/usage/efficiency.html",
+      "fetched_at": "2026-09-14T16:05:30.998232+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-9",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/llm_tutorial",
+      "fetched_at": "2026-09-14T16:05:31.876294+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-10",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/chat_templating",
+      "fetched_at": "2026-09-14T16:05:32.706275+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-11",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/main_classes/pipelines",
+      "fetched_at": "2026-09-14T16:05:34.034718+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-12",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/main_classes/tokenizer",
+      "fetched_at": "2026-09-14T16:05:36.430311+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-13",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/main_classes/model",
+      "fetched_at": "2026-09-14T16:05:38.338538+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-14",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/generation_strategies",
+      "fetched_at": "2026-09-14T16:05:39.478009+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-15",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/pad_truncation",
+      "fetched_at": "2026-09-14T16:05:40.488363+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-16",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/perf_infer_gpu_one",
+      "fetched_at": "2026-09-14T16:05:42.015455+00:00"
+    },
+    {
+      "id": "hugging-face-transformers-17",
+      "project": "Hugging Face Transformers",
+      "source_url": "https://huggingface.co/docs/transformers/main/en/serialization",
+      "fetched_at": "2026-09-14T16:05:43.151088+00:00"
+    },
+    {
+      "id": "chroma-18",
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/collections/add-data",
+      "fetched_at": "2026-09-14T16:05:44.046533+00:00"
+    },
+    {
+      "id": "chroma-19",
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/querying-collections/query-and-get",
+      "fetched_at": "2026-09-14T16:05:44.673087+00:00"
+    },
+    {
+      "id": "chroma-20",
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/embeddings/embedding-functions",
+      "fetched_at": "2026-09-14T16:05:45.046219+00:00"
+    },
+    {
+      "id": "chroma-21",
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/collections/configure",
+      "fetched_at": "2026-09-14T16:05:45.716450+00:00"
+    },
+    {
+      "id": "chroma-22",
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/embeddings",
+      "fetched_at": "2026-09-14T16:05:48.010691+00:00"
+    },
+    {
+      "id": "chroma-23",
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/overview/getting-started",
+      "fetched_at": "2026-09-14T16:05:50.171312+00:00"
+    },
+    {
+      "id": "ragas-24",
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/",
+      "fetched_at": "2026-09-14T16:05:51.036085+00:00"
+    },
+    {
+      "id": "ragas-25",
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/faithfulness/",
+      "fetched_at": "2026-09-14T16:05:51.636048+00:00"
+    },
+    {
+      "id": "ragas-26",
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/context_precision/",
+      "fetched_at": "2026-09-14T16:05:52.505309+00:00"
+    },
+    {
+      "id": "ragas-27",
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/context_recall/",
+      "fetched_at": "2026-09-14T16:05:53.139640+00:00"
+    },
+    {
+      "id": "ragas-28",
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/answer_relevance/",
+      "fetched_at": "2026-09-14T16:05:53.461687+00:00"
+    },
+    {
+      "id": "ragas-29",
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/getstarted/quickstart/",
+      "fetched_at": "2026-09-14T16:05:54.085819+00:00"
+    },
+    {
+      "id": "langfuse-30",
+      "project": "Langfuse",
+      "source_url": "https://langfuse.com/docs/observability/overview",
+      "fetched_at": "2026-09-14T16:05:55.968045+00:00"
+    },
+    {
+      "id": "langfuse-31",
+      "project": "Langfuse",
+      "source_url": "https://langfuse.com/docs/datasets/overview",
+      "fetched_at": "2026-09-14T16:05:56.958796+00:00"
+    },
+    {
+      "id": "langfuse-32",
+      "project": "Langfuse",
+      "source_url": "https://langfuse.com/docs/evaluation/overview",
+      "fetched_at": "2026-09-14T16:05:57.548133+00:00"
+    },
+    {
+      "id": "langfuse-33",
+      "project": "Langfuse",
+      "source_url": "https://langfuse.com/docs/tracing/overview",
+      "fetched_at": "2026-09-14T16:05:58.139175+00:00"
+    },
+    {
+      "id": "langfuse-34",
+      "project": "Langfuse",
+      "source_url": "https://langfuse.com/docs/observability/sdk/python/sdk-v3",
+      "fetched_at": "2026-09-14T16:05:58.732047+00:00"
+    },
+    {
+      "id": "langfuse-35",
+      "project": "Langfuse",
+      "source_url": "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge",
+      "fetched_at": "2026-09-14T16:05:59.876522+00:00"
+    },
+    {
+      "id": "langfuse-36",
+      "project": "Langfuse",
+      "source_url": "https://langfuse.com/docs/prompt-management/get-started",
+      "fetched_at": "2026-09-14T16:06:00.508627+00:00"
+    }
+  ],
+  "failures": [
+    {
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/search/",
+      "error": "extracted content is too short"
+    },
+    {
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/points/",
+      "error": "extracted content is too short"
+    },
+    {
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/payload/",
+      "error": "extracted content is too short"
+    },
+    {
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/optimizers/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "Qdrant",
+      "source_url": "https://qdrant.tech/documentation/concepts/telemetry/",
+      "error": "extracted content is too short"
+    },
+    {
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/examples/applications/computing-embeddings/README.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/docs/sentence_transformer/usage/encode.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/docs/sentence_transformer/training/overview.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "Sentence Transformers",
+      "source_url": "https://sbert.net/docs/sentence_transformer/usage/multilingual.html",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/collections/metadata-filtering",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "Chroma",
+      "source_url": "https://docs.trychroma.com/docs/strategies-choosing-a-vector-database",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/howtos/customizations/metric_customization/",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "project": "RAGAS",
+      "source_url": "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/context_entity_recall/",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ]
+}

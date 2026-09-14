@@ -23,7 +23,9 @@ class TokenChunker:
         self._tokenizer = get_encoding("cl100k_base")
 
     def chunk(self, document: Document) -> list[Chunk]:
-        tokens = self._tokenizer.encode(document.content)
+        # Documentation may contain tokenizer markers as literal examples.
+        # They are source text here, not control tokens for a prompt.
+        tokens = self._tokenizer.encode(document.content, disallowed_special=())
 
         step = self.chunk_size - self.overlap
 

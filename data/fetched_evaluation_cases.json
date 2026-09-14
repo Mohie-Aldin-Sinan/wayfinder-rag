@@ -1,0 +1,26 @@
+[
+  {
+    "question": "How can Qdrant filtering restrict search results?",
+    "relevant_chunk_ids": ["qdrant-0-chunk-11", "qdrant-0-chunk-13"]
+  },
+  {
+    "question": "How does semantic search find relevant sentences?",
+    "relevant_chunk_ids": ["sentence-transformers-4-chunk-0", "sentence-transformers-4-chunk-1", "sentence-transformers-4-chunk-5"]
+  },
+  {
+    "question": "What can a Transformers pipeline be used for?",
+    "relevant_chunk_ids": ["hugging-face-transformers-11-chunk-0", "hugging-face-transformers-11-chunk-2"]
+  },
+  {
+    "question": "How are documents added to a Chroma collection?",
+    "relevant_chunk_ids": ["chroma-18-chunk-0", "chroma-18-chunk-1"]
+  },
+  {
+    "question": "What does the RAGAS faithfulness metric measure?",
+    "relevant_chunk_ids": ["ragas-25-chunk-0", "ragas-25-chunk-1", "ragas-25-chunk-2"]
+  },
+  {
+    "question": "What is observability used for in an LLM application?",
+    "relevant_chunk_ids": ["langfuse-30-chunk-0", "langfuse-30-chunk-1"]
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "question": "What two signals does hybrid retrieval combine?",
+    "expected_phrases": ["semantic vector search", "lexical keyword search"],
+    "requires_citation": true
+  },
+  {
+    "question": "What is Qdrant used for?",
+    "expected_phrases": ["vector database", "similarity search"],
+    "requires_citation": true
+  },
+  {
+    "question": "What is the capital of France?",
+    "expected_refusal": true,
+    "requires_citation": false
+  }
+]

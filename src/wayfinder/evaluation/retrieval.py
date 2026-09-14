@@ -45,6 +45,33 @@ def hit_at_k(
     )
 
 
+def document_recall_at_k(
+    evaluation_case: RetrievalEvaluationCase,
+    retrieved_chunks: Sequence[Chunk],
+) -> float:
+    """Measure recall after collapsing chunk IDs to parent document IDs."""
+    relevant_documents = {
+        chunk_id.split("-chunk-", maxsplit=1)[0]
+        for chunk_id in evaluation_case.relevant_chunk_ids
+    }
+    retrieved_documents = {chunk.document_id for chunk in retrieved_chunks}
+    return len(relevant_documents & retrieved_documents) / len(relevant_documents)
+
+
+def document_hit_at_k(
+    evaluation_case: RetrievalEvaluationCase,
+    retrieved_chunks: Sequence[Chunk],
+    k: int,
+) -> float:
+    if k <= 0:
+        raise ValueError("k must be greater than zero")
+    relevant_documents = {
+        chunk_id.split("-chunk-", maxsplit=1)[0]
+        for chunk_id in evaluation_case.relevant_chunk_ids
+    }
+    return float(any(chunk.document_id in relevant_documents for chunk in retrieved_chunks[:k]))
+
+
 def evaluate_retrieval(
     retrieval_service: RetrievalService,
     evaluation_cases: Sequence[RetrievalEvaluationCase],

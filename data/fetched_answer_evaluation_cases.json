@@ -1,0 +1,22 @@
+[
+  {
+    "question": "How are documents added to a Chroma collection?",
+    "expected_phrases": ["add", "documents", "collection"],
+    "requires_citation": true
+  },
+  {
+    "question": "What does the RAGAS faithfulness metric measure?",
+    "expected_phrases": ["factually consistent", "retrieved context"],
+    "requires_citation": true
+  },
+  {
+    "question": "What is observability used for in an LLM application?",
+    "expected_phrases": ["debugging", "understand what is happening"],
+    "requires_citation": true
+  },
+  {
+    "question": "What is the capital of France?",
+    "expected_refusal": true,
+    "requires_citation": false
+  }
+]

@@ -54,5 +54,37 @@
   {
     "question": "Why can a better prompt not fix missing evidence?",
     "relevant_chunk_ids": ["prompt-grounding-chunk-0", "rag-chunk-0"]
+  },
+  {
+    "question": "Why normalize embedding vectors?",
+    "relevant_chunk_ids": ["embedding-normalization-chunk-0"]
+  },
+  {
+    "question": "What is the memory tradeoff of larger embedding batches?",
+    "relevant_chunk_ids": ["embedding-batching-chunk-0"]
+  },
+  {
+    "question": "Which distance functions can compare vectors?",
+    "relevant_chunk_ids": ["vector-distance-chunk-0"]
+  },
+  {
+    "question": "Why filter by metadata before ranking?",
+    "relevant_chunk_ids": ["metadata-filtering-chunk-0", "qdrant-filtering-chunk-0"]
+  },
+  {
+    "question": "What is the purpose of overlap between chunks?",
+    "relevant_chunk_ids": ["chunk-overlap-chunk-0"]
+  },
+  {
+    "question": "Why can more retrieved context hurt generation?",
+    "relevant_chunk_ids": ["context-window-chunk-0", "chunking-chunk-0"]
+  },
+  {
+    "question": "Why does the quality of evidence labels matter?",
+    "relevant_chunk_ids": ["ground-truth-chunk-0"]
+  },
+  {
+    "question": "Which stages contribute to RAG latency?",
+    "relevant_chunk_ids": ["latency-chunk-0"]
   }
 ]

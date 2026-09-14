@@ -1,0 +1,94 @@
+[
+  {
+    "project": "Qdrant",
+    "source_url": "https://qdrant.tech/documentation/",
+    "topics": ["vector search", "filtering", "metadata"],
+    "urls": [
+      "https://qdrant.tech/documentation/concepts/search/",
+      "https://qdrant.tech/documentation/concepts/filtering/",
+      "https://qdrant.tech/documentation/concepts/collections/",
+      "https://qdrant.tech/documentation/concepts/points/",
+      "https://qdrant.tech/documentation/concepts/payload/",
+      "https://qdrant.tech/documentation/concepts/indexing/",
+      "https://qdrant.tech/documentation/concepts/optimizers/",
+      "https://qdrant.tech/documentation/concepts/storage/",
+      "https://qdrant.tech/documentation/concepts/telemetry/"
+    ]
+  },
+  {
+    "project": "Sentence Transformers",
+    "source_url": "https://sbert.net/",
+    "topics": ["embeddings", "semantic search", "cross-encoders"],
+    "urls": [
+      "https://sbert.net/examples/applications/computing-embeddings/README.html",
+      "https://sbert.net/examples/applications/semantic-search/README.html",
+      "https://sbert.net/docs/cross_encoder/usage/usage.html",
+      "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+      "https://sbert.net/docs/sentence_transformer/usage/encode.html",
+      "https://sbert.net/docs/sentence_transformer/training/overview.html",
+      "https://sbert.net/docs/sentence_transformer/usage/multilingual.html",
+      "https://sbert.net/docs/package_reference/sentence_transformer/SentenceTransformer.html",
+      "https://sbert.net/docs/sentence_transformer/usage/efficiency.html"
+    ]
+  },
+  {
+    "project": "Hugging Face Transformers",
+    "source_url": "https://huggingface.co/docs/transformers/",
+    "topics": ["text generation", "tokenizers", "models"],
+    "urls": [
+      "https://huggingface.co/docs/transformers/main/en/llm_tutorial",
+      "https://huggingface.co/docs/transformers/main/en/chat_templating",
+      "https://huggingface.co/docs/transformers/main/en/main_classes/pipelines",
+      "https://huggingface.co/docs/transformers/main/en/main_classes/tokenizer",
+      "https://huggingface.co/docs/transformers/main/en/main_classes/model",
+      "https://huggingface.co/docs/transformers/main/en/generation_strategies",
+      "https://huggingface.co/docs/transformers/main/en/pad_truncation",
+      "https://huggingface.co/docs/transformers/main/en/perf_infer_gpu_one",
+      "https://huggingface.co/docs/transformers/main/en/serialization"
+    ]
+  },
+  {
+    "project": "Chroma",
+    "source_url": "https://docs.trychroma.com/",
+    "topics": ["collections", "embeddings", "vector databases"],
+    "urls": [
+      "https://docs.trychroma.com/docs/collections/add-data",
+      "https://docs.trychroma.com/docs/querying-collections/query-and-get",
+      "https://docs.trychroma.com/docs/embeddings/embedding-functions",
+      "https://docs.trychroma.com/docs/collections/configure",
+      "https://docs.trychroma.com/docs/collections/metadata-filtering",
+      "https://docs.trychroma.com/docs/embeddings",
+      "https://docs.trychroma.com/docs/strategies-choosing-a-vector-database",
+      "https://docs.trychroma.com/docs/overview/getting-started"
+    ]
+  },
+  {
+    "project": "RAGAS",
+    "source_url": "https://docs.ragas.io/",
+    "topics": ["faithfulness", "context precision", "context recall"],
+    "urls": [
+      "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/",
+      "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/faithfulness/",
+      "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/context_precision/",
+      "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/context_recall/",
+      "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/answer_relevance/",
+      "https://docs.ragas.io/en/latest/getstarted/quickstart/",
+      "https://docs.ragas.io/en/latest/howtos/customizations/metric_customization/",
+      "https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/context_entity_recall/"
+    ]
+  },
+  {
+    "project": "Langfuse",
+    "source_url": "https://langfuse.com/docs",
+    "topics": ["tracing", "datasets", "LLM evaluation"],
+    "urls": [
+      "https://langfuse.com/docs/observability/overview",
+      "https://langfuse.com/docs/datasets/overview",
+      "https://langfuse.com/docs/evaluation/overview",
+      "https://langfuse.com/docs/tracing/overview",
+      "https://langfuse.com/docs/observability/sdk/python/sdk-v3",
+      "https://langfuse.com/docs/evaluation/evaluation-methods/llm-as-a-judge",
+      "https://langfuse.com/docs/prompt-management/get-started"
+    ]
+  }
+]

@@ -9,7 +9,9 @@ from wayfinder.evaluation import (
     hit_at_k,
     load_documents,
     load_evaluation_cases,
+    load_source_manifest,
     recall_at_k,
+    document_recall_at_k,
     reciprocal_rank,
 )
 from wayfinder.ingestion.models import Chunk
@@ -31,6 +33,16 @@ def test_recall_at_k_is_one_when_a_relevant_chunk_is_retrieved():
     ]
 
     assert recall_at_k(case, chunks) == 1.0
+
+
+def test_document_recall_accepts_a_different_chunk_from_the_same_document():
+    case = RetrievalEvaluationCase(
+        question="What is Qdrant?",
+        relevant_chunk_ids=frozenset({"qdrant-0-chunk-11"}),
+    )
+    chunks = [Chunk(id="qdrant-0-chunk-1", document_id="qdrant-0", content="Relevant page", chunk_index=1)]
+
+    assert document_recall_at_k(case, chunks) == 1.0
 
 
 def test_recall_at_k_is_zero_when_no_relevant_chunk_is_retrieved():
@@ -122,6 +134,18 @@ def test_load_documents_and_evaluation_cases(tmp_path: Path):
     assert documents[0].id == "qdrant"
     assert documents[0].content == "Qdrant stores vectors."
     assert cases[0].relevant_chunk_ids == frozenset({"qdrant-chunk-0"})
+
+
+def test_load_source_manifest(tmp_path: Path):
+    manifest_path = tmp_path / "sources.json"
+    manifest_path.write_text(
+        '[{"project": "Qdrant", "source_url": "https://qdrant.tech"}]',
+        encoding="utf-8",
+    )
+
+    manifest = load_source_manifest(manifest_path)
+
+    assert manifest[0]["project"] == "Qdrant"
 
 
 def test_ranking_metrics_reward_relevant_chunks_near_the_top():

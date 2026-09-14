@@ -1,9 +1,12 @@
 from pathlib import Path
 from uuid import uuid4
+import argparse
 
 from wayfinder.embeddings.service import EmbeddingService
 from wayfinder.evaluation import (
     hit_at_k,
+    document_hit_at_k,
+    document_recall_at_k,
     load_documents,
     load_evaluation_cases,
     recall_at_k,
@@ -21,6 +24,7 @@ from wayfinder.retrieval.service import RetrievalService
 
 def report_metrics(label, retrieval_service, cases) -> None:
     scores = []
+    document_scores = []
     hit_scores = {1: [], 3: [], 5: []}
     reciprocal_ranks = []
 
@@ -28,6 +32,7 @@ def report_metrics(label, retrieval_service, cases) -> None:
         retrieved = retrieval_service.retrieve(case.question, top_k=5)
         retrieved_ids = [chunk.id for chunk in retrieved]
         case_score = recall_at_k(case, retrieved)
+        document_scores.append(document_recall_at_k(case, retrieved))
         scores.append(case_score)
         for k in hit_scores:
             hit_scores[k].append(hit_at_k(case, retrieved, k))
@@ -37,15 +42,35 @@ def report_metrics(label, retrieval_service, cases) -> None:
         print(f"{label}_recall={case_score:.3f}")
 
     print(f"{label}_recall_at_5={sum(scores) / len(scores):.3f}")
+    print(f"{label}_document_recall_at_5={sum(document_scores) / len(document_scores):.3f}")
     for k, values in hit_scores.items():
         print(f"{label}_hit_at_{k}={sum(values) / len(values):.3f}")
+    print(
+        f"{label}_document_hit_at_5="
+        f"{sum(document_hit_at_k(case, retrieval_service.retrieve(case.question, top_k=5), 5) for case in cases) / len(cases):.3f}"
+    )
     print(f"{label}_mrr={sum(reciprocal_ranks) / len(reciprocal_ranks):.3f}")
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--corpus",
+        choices=("curated", "fetched"),
+        default="curated",
+        help="Corpus and matching evaluation labels to benchmark.",
+    )
+    args = parser.parse_args()
     project_root = Path(__file__).resolve().parents[1]
-    documents = load_documents(project_root / "data" / "documents")
-    cases = load_evaluation_cases(project_root / "data" / "evaluation_cases.json")
+    if args.corpus == "fetched":
+        corpus_dir = project_root / "data" / "fetched_documents"
+        documents = load_documents(corpus_dir, corpus_dir / "manifest.json")
+        cases = load_evaluation_cases(project_root / "data" / "fetched_evaluation_cases.json")
+    else:
+        documents = load_documents(project_root / "data" / "documents")
+        cases = load_evaluation_cases(project_root / "data" / "evaluation_cases.json")
+
+    print(f"corpus={args.corpus} documents={len(documents)} cases={len(cases)}")
 
     embedding_service = EmbeddingService()
     chunker = TokenChunker()
