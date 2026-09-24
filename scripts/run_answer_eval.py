@@ -8,6 +8,7 @@ from wayfinder.evaluation import (
     contains_expected_phrases,
     has_source_citation,
     is_refusal,
+    LocalAnswerJudge,
     load_documents,
 )
 from wayfinder.generation.local import LocalGenerationService
@@ -24,6 +25,8 @@ from wayfinder.retrieval.service import RetrievalService
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--corpus", choices=("curated", "fetched"), default="curated")
+    parser.add_argument("--judge", choices=("local", "openrouter", "none"), default="local")
+    parser.add_argument("--judge-model", default="openrouter/free")
     args = parser.parse_args()
     project_root = Path(__file__).resolve().parents[1]
     if args.corpus == "fetched":
@@ -62,7 +65,18 @@ def main() -> None:
             candidate_k=20,
         )
         generator = LocalGenerationService()
+        if args.judge == "local":
+            judge = LocalAnswerJudge(generator.generator)
+        elif args.judge == "openrouter":
+            from wayfinder.evaluation import OpenRouterAnswerJudge
+
+            judge = OpenRouterAnswerJudge(model=args.judge_model)
+        else:
+            judge = None
         correct = cited = refused = 0
+        answerable_correct = answerable_total = 0
+        refusal_correct = refusal_total = 0
+        judge_scores = []
 
         for case in cases:
             retrieved = [] if case.get("expected_refusal") else retrieval.retrieve(
@@ -85,13 +99,32 @@ def main() -> None:
             correct += int(is_correct)
             cited += int(citation_compliant)
             refused += int(is_refusal(answer))
+            if case.get("expected_refusal"):
+                refusal_total += 1
+                refusal_correct += int(is_correct)
+            else:
+                answerable_total += 1
+                answerable_correct += int(is_correct)
             print(f"question={case['question']}")
             print(f"correct={is_correct} cited={has_citation}")
             print(f"answer={answer}")
+            if retrieved and judge:
+                try:
+                    judge_result = judge.judge(case["question"], answer, retrieved)
+                    judge_scores.append(judge_result)
+                    print(f"judge={judge_result}")
+                except (ValueError, KeyError, TypeError) as error:
+                    print(f"judge_error={error}")
 
         print(f"answer_correctness={correct / len(cases):.3f}")
+        print(f"answerable_correctness={answerable_correct / answerable_total:.3f}")
+        print(f"refusal_correctness={refusal_correct / refusal_total:.3f}")
         print(f"answer_citation_rate={cited / len(cases):.3f}")
         print(f"answer_refusal_rate={refused / len(cases):.3f}")
+        if judge_scores:
+            for field in ("faithfulness", "relevance", "citation_quality", "conciseness"):
+                average = sum(float(score[field]) for score in judge_scores) / len(judge_scores)
+                print(f"judge_{field}_average={average:.3f}")
     finally:
         vector_store.client.delete_collection(vector_store.collection_name)
 

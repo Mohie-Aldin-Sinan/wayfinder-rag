@@ -1,6 +1,6 @@
 from typing import Any
 
-from transformers import pipeline
+from transformers import GenerationConfig, pipeline
 
 from wayfinder.generation.prompts import (
     attach_source_citations,
@@ -18,6 +18,10 @@ class LocalGenerationService:
         self.generator = generator or pipeline(
             "text-generation",
             model=model_name,
+        )
+        self.generation_config = GenerationConfig(
+            max_new_tokens=128,
+            do_sample=False,
         )
 
     def generate(self, query: str, chunks: list[Chunk]) -> str:
@@ -42,8 +46,7 @@ class LocalGenerationService:
         ]
         result = self.generator(
             messages,
-            max_new_tokens=128,
-            do_sample=False,
+            generation_config=self.generation_config,
         )
         generated = result[0]["generated_text"]
         if isinstance(generated, list):

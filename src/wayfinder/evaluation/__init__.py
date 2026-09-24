@@ -3,6 +3,8 @@ from wayfinder.evaluation.dataset import (
     load_evaluation_cases,
     load_source_manifest,
 )
+from wayfinder.evaluation.judge import LocalAnswerJudge
+from wayfinder.evaluation.openrouter_judge import OpenRouterAnswerJudge
 from wayfinder.evaluation.models import RetrievalEvaluationCase
 from wayfinder.evaluation.retrieval import (
     evaluate_retrieval,
@@ -15,6 +17,8 @@ from wayfinder.evaluation.retrieval import (
 
 __all__ = [
     "RetrievalEvaluationCase",
+    "LocalAnswerJudge",
+    "OpenRouterAnswerJudge",
     "contains_expected_phrases",
     "evaluate_retrieval",
     "document_hit_at_k",

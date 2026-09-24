@@ -1,9 +1,37 @@
 from wayfinder.ingestion.models import Chunk
 
 
+NOISE_PHRASES = (
+    "want to see it in action",
+    "create a free account",
+    "interactive example project",
+    "skip to content",
+    "skip to main",
+)
+
+
+def clean_context(text: str) -> str:
+    lines = []
+    seen = set()
+    for line in text.splitlines():
+        normalized = " ".join(line.split())
+        if not normalized:
+            continue
+        lowered = normalized.casefold()
+        if any(phrase in lowered for phrase in NOISE_PHRASES):
+            continue
+        if normalized.count("🚀") >= 1:
+            continue
+        if normalized.casefold() in seen:
+            continue
+        seen.add(normalized.casefold())
+        lines.append(normalized)
+    return "\n".join(lines)
+
+
 def build_grounded_prompt(query: str, chunks: list[Chunk]) -> str:
     context = "\n\n".join(
-        f"[Source: {chunk.id}]\n{chunk.content}" for chunk in chunks
+        f"[Source: {chunk.id}]\n{clean_context(chunk.content)}" for chunk in chunks
     )
 
     return (

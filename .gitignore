@@ -11,3 +11,6 @@ qdrant_storage/
 
 # Virtual environments
 .venv
+
+# Local credentials
+.env

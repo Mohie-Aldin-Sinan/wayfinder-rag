@@ -1,6 +1,7 @@
 from unittest.mock import Mock
 
 from wayfinder.generation.local import LocalGenerationService
+from wayfinder.generation.prompts import build_grounded_prompt
 from wayfinder.ingestion.models import Chunk
 
 
@@ -24,7 +25,24 @@ def test_local_generation_returns_generated_text():
     )
     generator.assert_called_once()
     assert generator.call_args.args[0][0]["role"] == "system"
-    assert generator.call_args.kwargs["max_new_tokens"] == 128
+    assert generator.call_args.kwargs["generation_config"].max_new_tokens == 128
+    assert generator.call_args.kwargs["generation_config"].do_sample is False
+
+
+def test_grounded_prompt_removes_documentation_promotion_but_keeps_evidence():
+    chunk = Chunk(
+        id="langfuse-30-chunk-1",
+        document_id="langfuse-30",
+        content="Want to see it in action?\nCreate a free account\nTracing records request inputs and outputs.",
+        chunk_index=1,
+    )
+
+    prompt = build_grounded_prompt("What is tracing?", [chunk])
+
+    assert "Create a free account" not in prompt
+    assert "Tracing records request inputs and outputs." in prompt
+
+
 
 
 def test_local_generation_refuses_without_context():
