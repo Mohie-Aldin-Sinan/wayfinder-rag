@@ -1,0 +1,26 @@
+[
+  {
+    "question": "How do I put records into a Chroma collection?",
+    "relevant_chunk_ids": ["chroma-18-chunk-0", "chroma-18-chunk-1"]
+  },
+  {
+    "question": "How can I tell whether an answer is supported by the evidence?",
+    "relevant_chunk_ids": ["ragas-25-chunk-0", "ragas-25-chunk-1", "ragas-25-chunk-2"]
+  },
+  {
+    "question": "How do I understand what happened inside my AI application?",
+    "relevant_chunk_ids": ["langfuse-30-chunk-0", "langfuse-30-chunk-1"]
+  },
+  {
+    "question": "How can I verify that a generated response is supported by retrieved evidence?",
+    "relevant_chunk_ids": ["ragas-25-chunk-0", "ragas-25-chunk-1", "ragas-25-chunk-2"]
+  },
+  {
+    "question": "How do I inspect the complete lifecycle of an AI request, including retrieval and model calls?",
+    "relevant_chunk_ids": ["langfuse-30-chunk-0", "langfuse-30-chunk-1"]
+  },
+  {
+    "question": "How can I add text records together with stable identifiers to a collection?",
+    "relevant_chunk_ids": ["chroma-18-chunk-0", "chroma-18-chunk-1"]
+  }
+]
