@@ -19,7 +19,7 @@ Retrieval and generation are deliberately separated. This makes it possible to m
 
 ## Current Results
 
-On the initial 14-question benchmark:
+On the initial 14-question benchmark (measured before the evaluation set grew to 22 questions in `data/evaluation_cases.json`, so these numbers should be re-run before being quoted as current):
 
 | Retriever | Hit@1 | MRR | Recall@5 |
 | --- | ---: | ---: | ---: |
@@ -31,12 +31,14 @@ These results are an early benchmark, not a universal claim. The corpus is inten
 
 ## Local Setup
 
-The project uses local models and does not require a paid LLM API. Start the Qdrant container used by the integration tests:
+The project uses local models and does not require a paid LLM API. The integration tests need a Qdrant server on port 6333:
 
 ```bash
-docker start wayfinder-qdrant
+docker compose up -d qdrant
 uv sync
 ```
+
+The first run downloads the embedding, reranking and generation models from Hugging Face, and the tokenizer used for chunking. These need internet access, and the models take a while to download.
 
 Run tests:
 
