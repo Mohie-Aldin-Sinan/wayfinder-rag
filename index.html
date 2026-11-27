@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Wayfinder: a retrieval pipeline for open-source software documentation, with measured results and an evaluation set." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a8f7a'/%3E%3Cpath d='M6 22 L13 9 L19 18 L26 7' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E" />
+    <title>Wayfinder — retrieval case study</title>
+  </head>
+  <body>
+    <header class="top">
+      <a class="wordmark" href="#top">Wayfinder<span>/retrieval</span></a>
+      <nav aria-label="Sections">
+        <a href="#pipeline">Pipeline</a>
+        <a href="#results">Results</a>
+        <a href="#questions">Questions</a>
+        <a href="#notes">Notes</a>
+      </nav>
+      <button type="button" id="theme" class="theme" aria-label="Switch colour theme">Dark</button>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <p class="label">Case study · open-source software documentation</p>
+        <h1>Find the right paragraph, then answer from it.</h1>
+        <p class="lede">
+          Wayfinder is a retrieval-augmented generation pipeline built so each stage can be measured on its own.
+          If an answer is wrong, the evaluation shows whether retrieval found the evidence or generation used it badly.
+        </p>
+        <div class="intro-actions">
+          <a class="button" href="https://github.com/Mohie-Aldin-Sinan/wayfinder-rag">View the code</a>
+          <a class="button ghost" href="#results">See the numbers</a>
+        </div>
+      </section>
+
+      <section id="pipeline" class="block">
+        <header class="block-head">
+          <p class="label">01 · Pipeline</p>
+          <h2>Eight stages, each replaceable.</h2>
+        </header>
+        <ol class="stages">
+          <li><span class="n">01</span><strong>Documents</strong><small>Markdown from official docs</small></li>
+          <li><span class="n">02</span><strong>Token chunking</strong><small>Fixed-size, overlapping chunks</small></li>
+          <li><span class="n">03</span><strong>Local embeddings</strong><small>Runs without a paid API</small></li>
+          <li><span class="n">04</span><strong>Dense retrieval</strong><small>Vector search in Qdrant</small></li>
+          <li><span class="n">05</span><strong>Lexical BM25</strong><small>Keyword matching</small></li>
+          <li><span class="n">06</span><strong>Rank fusion</strong><small>Reciprocal-rank fusion of both lists</small></li>
+          <li><span class="n">07</span><strong>Cross-encoder rerank</strong><small>Reorders the top candidates</small></li>
+          <li><span class="n">08</span><strong>Grounded generation</strong><small>Answers cite the retrieved chunks</small></li>
+        </ol>
+        <p class="note">Retrieval and generation are scored separately, so a bad answer can be traced to the stage that caused it.</p>
+      </section>
+
+      <section id="results" class="block">
+        <header class="block-head">
+          <p class="label">02 · Results</p>
+          <h2>Each retrieval step, measured.</h2>
+        </header>
+
+        <div class="results">
+          <table>
+            <thead>
+              <tr><th scope="col">Retriever</th><th scope="col">Hit@1</th><th scope="col">MRR</th><th scope="col">Recall@5</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Dense</th><td>0.857</td><td>0.917</td><td>1.000</td></tr>
+              <tr><th scope="row">Hybrid</th><td>0.929</td><td>0.964</td><td>1.000</td></tr>
+              <tr class="best"><th scope="row">Hybrid + reranking</th><td>1.000</td><td>1.000</td><td>1.000</td></tr>
+            </tbody>
+          </table>
+
+          <div class="bars" role="img" aria-label="Hit at 1 by retriever: dense 0.857, hybrid 0.929, hybrid with reranking 1.000">
+            <p class="label">Hit@1</p>
+            <div class="bar"><span>Dense</span><i style="--v: 0.857"></i><b>0.857</b></div>
+            <div class="bar"><span>Hybrid</span><i style="--v: 0.929"></i><b>0.929</b></div>
+            <div class="bar"><span>+ Rerank</span><i style="--v: 1"></i><b>1.000</b></div>
+          </div>
+        </div>
+
+        <p class="note warn">
+          These figures come from the project's first 14-question benchmark. The evaluation set has since grown to 22 questions
+          (see below), so the numbers should be re-run before being quoted as current.
+        </p>
+      </section>
+
+      <section id="questions" class="block">
+        <header class="block-head">
+          <p class="label">03 · Evaluation set</p>
+          <h2>The questions the system is scored on.</h2>
+        </header>
+
+        <div class="search">
+          <label for="filter" class="sr-only">Filter questions</label>
+          <input id="filter" type="search" placeholder="Filter by keyword, e.g. filter, hybrid, chroma" />
+          <span id="count" class="muted small"></span>
+        </div>
+
+        <ul id="cases" class="cases" aria-live="polite"></ul>
+      </section>
+
+      <section id="notes" class="block">
+        <header class="block-head">
+          <p class="label">04 · Notes</p>
+          <h2>What this does and does not show.</h2>
+        </header>
+        <ul class="notes">
+          <li>The benchmark is small and was built by the author, so treat the figures as an early signal rather than a general claim.</li>
+          <li>Relevance labels point to specific chunk IDs, so a correct answer from a different chunk counts as a miss.</li>
+          <li>Latency has not been measured yet. Indexing a larger corpus is listed as future work.</li>
+          <li>This page shows recorded results. It does not run the pipeline live.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>Wayfinder · built with Python, Qdrant and local models</span>
+      <a href="https://github.com/Mohie-Aldin-Sinan/wayfinder-rag">Source on GitHub</a>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

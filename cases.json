@@ -1,0 +1,90 @@
+[
+  {
+    "question": "What is Qdrant used for?",
+    "relevant_chunk_ids": ["qdrant-chunk-0"]
+  },
+  {
+    "question": "What does an embedding represent?",
+    "relevant_chunk_ids": ["embeddings-chunk-0"]
+  },
+  {
+    "question": "Why does retrieval quality matter for generation?",
+    "relevant_chunk_ids": ["rag-chunk-0"]
+  },
+  {
+    "question": "What is the risk of making chunks too large?",
+    "relevant_chunk_ids": ["chunking-chunk-0"]
+  },
+  {
+    "question": "Which retrieval method helps with exact technical identifiers?",
+    "relevant_chunk_ids": ["hybrid-retrieval-chunk-0"]
+  },
+  {
+    "question": "How can we reduce irrelevant context before generation?",
+    "relevant_chunk_ids": ["reranking-chunk-0"]
+  },
+  {
+    "question": "How can search be restricted to a particular document type?",
+    "relevant_chunk_ids": ["qdrant-filtering-chunk-0"]
+  },
+  {
+    "question": "What does cosine similarity compare?",
+    "relevant_chunk_ids": ["vector-search-chunk-0"]
+  },
+  {
+    "question": "How can search match related meanings with different words?",
+    "relevant_chunk_ids": ["semantic-search-chunk-0", "vector-search-chunk-0"]
+  },
+  {
+    "question": "What should a model do when retrieved context is insufficient?",
+    "relevant_chunk_ids": ["prompt-grounding-chunk-0"]
+  },
+  {
+    "question": "Why should first-stage retrieval collect many candidates?",
+    "relevant_chunk_ids": ["candidate-retrieval-chunk-0"]
+  },
+  {
+    "question": "Which ranking method uses inverse document frequency?",
+    "relevant_chunk_ids": ["bm25-chunk-0"]
+  },
+  {
+    "question": "What two signals does hybrid retrieval combine?",
+    "relevant_chunk_ids": ["hybrid-retrieval-chunk-0"]
+  },
+  {
+    "question": "Why can a better prompt not fix missing evidence?",
+    "relevant_chunk_ids": ["prompt-grounding-chunk-0", "rag-chunk-0"]
+  },
+  {
+    "question": "Why normalize embedding vectors?",
+    "relevant_chunk_ids": ["embedding-normalization-chunk-0"]
+  },
+  {
+    "question": "What is the memory tradeoff of larger embedding batches?",
+    "relevant_chunk_ids": ["embedding-batching-chunk-0"]
+  },
+  {
+    "question": "Which distance functions can compare vectors?",
+    "relevant_chunk_ids": ["vector-distance-chunk-0"]
+  },
+  {
+    "question": "Why filter by metadata before ranking?",
+    "relevant_chunk_ids": ["metadata-filtering-chunk-0", "qdrant-filtering-chunk-0"]
+  },
+  {
+    "question": "What is the purpose of overlap between chunks?",
+    "relevant_chunk_ids": ["chunk-overlap-chunk-0"]
+  },
+  {
+    "question": "Why can more retrieved context hurt generation?",
+    "relevant_chunk_ids": ["context-window-chunk-0", "chunking-chunk-0"]
+  },
+  {
+    "question": "Why does the quality of evidence labels matter?",
+    "relevant_chunk_ids": ["ground-truth-chunk-0"]
+  },
+  {
+    "question": "Which stages contribute to RAG latency?",
+    "relevant_chunk_ids": ["latency-chunk-0"]
+  }
+]
